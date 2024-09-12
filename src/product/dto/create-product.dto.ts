@@ -3,15 +3,22 @@ const REG_EMAIL =
 const REG_NAME =
   /^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+((\s[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+)+)?$/;
 
-import { IsString, IsInt, IsNotEmpty } from 'class-validator';
+import {
+  IsString,
+  IsInt,
+  IsNotEmpty,
+  Matches,
+  IsNumber,
+} from 'class-validator';
 export class CreateProductDto {
   @IsString({ message: 'Name must be a string' })
   @IsNotEmpty({ message: 'Name must not be empty' })
+  @Matches(REG_NAME, { message: 'Name must contain only letters and spaces' })
   readonly name: string;
 
   @IsInt({ message: 'Quantity must be a number' })
   readonly qty?: number;
 
-  @IsInt({ message: 'Price must be a number' })
+  @IsNumber({maxDecimalPlaces: 2}, { message: 'Price must be a number' })
   readonly price: number;
 }

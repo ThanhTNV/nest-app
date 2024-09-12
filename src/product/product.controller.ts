@@ -8,12 +8,16 @@ import {
   Patch,
   Param,
   Delete,
+  ParseArrayPipe,
+  UseFilters,
+  NotFoundException,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Request, Response } from 'express';
 import { Product } from './entities/product.entity';
+import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
 
 @Controller('product')
 export class ProductController {
@@ -21,7 +25,8 @@ export class ProductController {
 
   @Post('create')
   async create(
-    @Body() createProductDto: CreateProductDto[],
+    @Body(new ParseArrayPipe({ items: CreateProductDto }))
+    createProductDto: CreateProductDto[],
     @Res() res: Response,
   ) {
     if (createProductDto.length === 0) {
@@ -63,5 +68,10 @@ export class ProductController {
   async remove(@Param('id') id: string): Promise<Product | string> {
     const removedProd = await this.productService.remove(+id);
     return removedProd ? removedProd : 'Product not found';
+  }
+
+  @Get()
+  getAll(@Req() req: Request, @Res() res: Response): void {
+    res.redirect('/product/all');
   }
 }
