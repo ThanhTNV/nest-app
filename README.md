@@ -28,6 +28,7 @@ ThanhSE - K18 FPTU-HCM
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript repository.
+[http://{host}:{port}/api](#) for API Document
 
 ## Project setup
 
