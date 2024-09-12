@@ -23,12 +23,14 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Author
+
 ThanhSE - K18 FPTU-HCM
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript repository.
-[http://{host}:{port}/api](#) for API Document
+- [Nest](https://github.com/nestjs/nest) framework TypeScript repository.
+
+- [http://{host}:{port}/api](#) for API Document.
 
 ## Project setup
 
